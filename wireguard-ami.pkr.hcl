@@ -13,7 +13,7 @@ source "amazon-ebs" "wireguard-ami" {
     region = "eu-west-1"
     source_ami_filter {
         filters = {
-            name = "Rocky Linux 9 (Official) - aarch64"
+            name = "Rocky-9-EC2-9.0*.aarch64-*"
             architecture = "arm64"
         }
         most_recent = true
