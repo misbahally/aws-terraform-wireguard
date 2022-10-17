@@ -13,6 +13,15 @@ provider "aws" {
     region = "eu-west-1"
 
 }
+variable "instance_type" {
+   type    = string
+   default = "t4g.nano"
+}
+
+variable "instance_name" {
+   type    = string
+   default = "Wireguard-VPN"
+}
 
 data "aws_ami_ids" "rocky" {
     owners = ["679593333241"]
@@ -30,9 +39,9 @@ data "aws_ami_ids" "rocky" {
 
 resource "aws_instance" "wireguard_server" {
     ami = data.aws_ami_ids.rocky.ids[0]
-    instance_type = "t4g.nano"
+    instance_type = var.instance_type
 
     tags = {
-        Name = "Wireguard VPN"
+        Name = var.instance_name
     }
 }
