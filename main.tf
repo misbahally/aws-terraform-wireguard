@@ -14,13 +14,12 @@ provider "aws" {
 
 }
 
-data "aws_ami" "rocky" {
-    most_recent = true
+data "aws_ami_ids" "rocky" {
     owners = ["679593333241"]
 
     filter {
         name = "name"
-        values = "Rocky-9-EC2-9.0*.aarch64-*"
+        values = ["Rocky-9-EC2-9.0*.aarch64-*"]
     }
 
     filter {
@@ -30,7 +29,7 @@ data "aws_ami" "rocky" {
 }
 
 resource "aws_instance" "wireguard_server" {
-    ami = data.aws_ami.rocky
+    ami = data.aws_ami_ids.rocky.ids[0]
     instance_type = "t4g.nano"
 
     tags = {
