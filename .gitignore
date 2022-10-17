@@ -1,0 +1,4 @@
+*
+!.gitignore
+!main.tf
+!wireguard-ami.pkr.hcl
