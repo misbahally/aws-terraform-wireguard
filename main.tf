@@ -102,7 +102,7 @@ resource "aws_instance" "wireguard_server" {
     ami = data.aws_ami_ids.rocky.ids[0]
     instance_type = var.instance_type
     vpc_security_group_ids = [aws_security_group.wireguard_security_group.id]
-
+    key_name = "misbah@mlo"
     tags = {
         Name = var.instance_name
     }
