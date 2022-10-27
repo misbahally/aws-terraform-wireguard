@@ -10,7 +10,7 @@ terraform {
 }
 
 provider "aws" {
-    region = "eu-west-1"
+   region = "eu-west-1"
 
 }
 variable "instance_type" {
@@ -39,17 +39,17 @@ variable "egress_rules_udp" {
 }
 
 data "aws_ami_ids" "rocky" {
-    owners = ["679593333241"]
+   owners = ["679593333241"]
 
-    filter {
-        name = "name"
-        values = ["Rocky-9-EC2-9.0*.aarch64-*"]
-    }
+   filter {
+      name = "name"
+      values = ["Rocky-9-EC2-9.0*.aarch64-*"]
+   }
 
-    filter {
-        name = "architecture"
-        values = ["arm64"]
-    }
+   filter {
+      name = "architecture"
+      values = ["arm64"]
+   }
 }
 
 
@@ -99,11 +99,11 @@ resource "aws_security_group" "wireguard_security_group" {
 }
 
 resource "aws_instance" "wireguard_server" {
-    ami = data.aws_ami_ids.rocky.ids[0]
-    instance_type = var.instance_type
-    vpc_security_group_ids = [aws_security_group.wireguard_security_group.id]
-    key_name = "misbah@mlo"
-    tags = {
-        Name = var.instance_name
-    }
+   ami = data.aws_ami_ids.rocky.ids[0]
+   instance_type = var.instance_type
+   vpc_security_group_ids = [aws_security_group.wireguard_security_group.id]
+   key_name = "misbah@mlo"
+   tags = {
+      Name = var.instance_name
+   }
 }
