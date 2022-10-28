@@ -1,4 +1,6 @@
 *
 !.gitignore
 !main.tf
+!variables.tf
+!versions.tf
 !wireguard-ami.pkr.hcl

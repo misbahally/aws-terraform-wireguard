@@ -1,41 +1,6 @@
-terraform {
-   required_providers {
-     aws = {
-         source = "hashicorp/aws"
-         version = "~> 4.16"
-     }
-   }
-
-   required_version = ">= 1.2.0"
-}
-
 provider "aws" {
    region = "eu-west-1"
 
-}
-variable "instance_type" {
-   type    = string
-   default = "t4g.nano"
-}
-variable "instance_name" {
-   type    = string
-   default = "Wireguard VPN"
-}
-variable "ingress_rules" {
-  type    = list(number)
-  default = [22]
-}
-variable "ingress_rules_udp" {
-  type    = list(number)
-  default = [19872]
-}
-variable "egress_rules" {
-   type    = list(number)
-   default = []
-}
-variable "egress_rules_udp" {
-   type    = list(number)
-   default = []
 }
 
 data "aws_ami_ids" "rocky" {
