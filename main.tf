@@ -21,6 +21,9 @@ data "aws_ami_ids" "rocky" {
 resource "aws_security_group" "wireguard_security_group" {
    name        = join("",[var.instance_name, " Security Group"])
    description = join("",["Allow traffic to access instance ", var.instance_name, " instance"])
+   tags = {
+      Name = var.instance_name
+   }
    dynamic "ingress" {
       iterator = port
       for_each = var.ingress_rules
