@@ -72,3 +72,11 @@ resource "aws_instance" "wireguard_server" {
       Name = var.instance_name
    }
 }
+
+resource "aws_eip" "lb" {
+  instance = aws_instance.wireguard_server.id
+  vpc      = true
+   tags = {
+      Name = var.instance_name
+   }
+}
