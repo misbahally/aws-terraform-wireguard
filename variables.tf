@@ -16,9 +16,9 @@ variable "ingress_rules_udp" {
 }
 variable "egress_rules" {
    type    = list(number)
-   default = []
+   default = [0]
 }
 variable "egress_rules_udp" {
    type    = list(number)
-   default = []
+   default = [0]
 }
